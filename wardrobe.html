@@ -1,0 +1,412 @@
+
+          
+<style>
+    .card {
+      background-color: #f2f2f2;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      padding: 20px;
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    fieldset label {
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    fieldset {
+      border: none;
+      margin-top: 20px;
+      text-align: center;
+      display: flex; 
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .option-card {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+      flex-basis: calc(33.33% - 20px);
+      margin-right: 20px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      
+    }
+  
+    
+    .option-card:last-child {
+      margin-right: 0;
+    }
+    
+    .option-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .option-card.selected {
+      border: 2px solid #4CAF50;
+    }
+    
+    .option-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-align: center;
+  
+    }
+    
+    
+    .option-card img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .option-info {
+      text-align: center;
+    }
+    
+    .option-card .option-info {
+      display: none;
+    }
+    
+    .option-card.selected .option-info {
+      display: block;
+      margin-top: 10px;
+    }
+    
+    .updated-amount {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    line-height: 1;
+  }
+  
+    
+  
+    #total-cost {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+    </style>
+  
+    <div class="card" style="text-align: center;">
+      <h2>Wardrobe Modular</h2>
+      <form>
+    
+        <fieldset>
+          <label for="material">Select Your Preferred Core Material:</label>
+  
+          <div class="option-card">
+            <input type="radio" id="option1" name="option" value="option1" required>
+            <label for="option1">
+              <h3>MDF Material</h3>
+              <h4>Seamless, free of knots, and has high resistance to wear & tear.          </h4>
+              <div class="option-info">
+                <img src="MDF Material.jpg" alt="Option 1">
+                <p>Pro Tip: An ideal choice for the cabinets owing to its smooth surface.</p>
+                <p>Cost: ₹50</p>
+              </div>
+            </label>
+          </div>
+          
+          <div class="option-card">
+            <input type="radio" id="option2" name="option" value="option2">
+            <label for="option2">
+              <h3>HDF/HMR</h3>
+              <h4>Sturdy and highly dense along with a solid screw-holding capacity.</h4>
+              <div class="option-info">
+                <img src="HDFHMR Material.jpg" alt="Option 2">
+                <p>Pro Tip: A good option that comes with a high load-bearing capacity.</p>
+                <p>Cost: ₹75</p>
+              </div>
+            </label>
+          </div>
+    
+         
+        <label for="services">Add your preferred accessories:</label>
+  
+        <div class="option-card">
+          <input type="checkbox" id="option1" name="option" value="option1" required>
+          <label for="option1">
+            <h3>Loft</h3>
+            <div class="option-info">
+              <img src="Loft.jpeg" alt="Option 1">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+        
+        <div class="option-card">
+          <input type="checkbox" id="option2" name="option" value="option2">
+          <label for="option2">
+            <h3>Single full-size drawer</h3>
+            <div class="option-info">
+              <img src="Single Full Size Drawer.jpg" alt="Option 2">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+  
+       
+        <div class="option-card">
+          <input type="checkbox" id="option3" name="option" value="option3">
+          <label for="option3">
+            <h3>1 half-drawer</h3>
+            <div class="option-info">
+              <img src="1 Half Drawer.jpg" alt="Option 3">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+        
+        <div class="option-card">
+          <input type="checkbox" id="option4" name="option" value="option4">
+          <label for="option4">
+            <h3>2 half-drawers</h3>
+            <div class="option-info">
+              <img src="2 Halves Drawer.jpg" alt="Option 4">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+        <div class="option-card">
+          <input type="checkbox" id="option5" name="option" value="option5">
+          <label for="option5">
+            <h3>Wicker pull out</h3>
+            <div class="option-info">
+              <img src="Wicker Pull Out.jpg" alt="Option 5">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+            
+          
+    
+            <label for="loft">What is the Height of your Wardrobe?:</label>
+  
+            <div class="option-card">
+              <input type="radio" id="option1" name="loft" value="option1" required>
+              <label for="option1">
+                <h3>4ft</h3>
+                <h4>4ft wardrobe height</h4>
+                <div class="option-info">
+                  <p>Cost:₹5</p>
+                </div>
+              </label>
+            </div>
+            
+            
+   <div class="option-card">
+    <input type="radio" id="option2" name="loft" value="option2">
+    <label for="option2">
+      <h3>6ft</h3>
+      <h4>6ft wardrobe height</h4>
+      <div class="option-info">
+        <p>Cost:₹10</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="option3" name="loft" value="option3">
+    <label for="option3">
+      <h3>7ft</h3>
+      <h4>7ft wardrobe height</h4>
+      <div class="option-info">
+        <p>Cost:₹15</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="option4" name="loft" value="option4">
+    <label for="option4">
+      <h3>9ft</h3>
+      <h4>9ft wardrobe height</h4>
+      <div class="option-info">
+        <p>Cost:₹20</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="option5" name="loft" value="option5">
+    <label for="option5">
+      <h3>10ft</h3>
+      <h4>10ft wardrobe height</h4>
+      <div class="option-info">
+        <p>Cost:₹22</p>
+      </div>
+    </label>
+  </div>
+ 
+  
+           
+            <label for="finish">Select your preferred finish:</label>
+  
+            <div class="option-card">
+              <input type="radio" id="option1" name="base" value="option1" required>
+              <label for="option1">
+                <h3>Standard - Laminate</h3>
+                <!-- <h4>Is a smooth, durable finish which gives a clean and rich look.</h4> -->
+                <div class="option-info">
+                  <img src="Standard Laminate.jpg" alt="Option 1">
+                  <p>Pro Tip: Looking for a seamless finish that sits well with every interior? This one's for you.</p>
+                  <p>Cost: ₹50</p>
+                </div>
+              </label>
+            </div>
+            
+            <div class="option-card">
+              <input type="radio" id="option2" name="base" value="option2">
+              <label for="option2">
+                <h3>Premium - Membrane</h3>
+                <!-- <h4>Is glossy with solid colours that uplifts a space with its shiny finish.</h4> -->
+                <div class="option-info">
+                  <img src="Premium Membrane.jpg" alt="Option 2">
+                  <p>Pro Tip: Get a magazine-like look that requires low maintenance.</p>
+                  <p>Cost: ₹75</p>
+                </div>
+              </label>
+            </div>
+      
+            
+    <div class="option-card">
+      <input type="radio" id="option3" name="base" value="option3">
+      <label for="option3">
+        <h3>Luxe - Acrylic</h3>
+        <!-- <h4>Comes with a smooth surface and has better grooving ability.</h4> -->
+        <div class="option-info">
+          <img src="Luxe Acrylic.jpg" alt="Option 3">
+          <p>Pro Tip:Adds a touch of luxury to your modular wardrobe.</p>
+          <p>Cost: ₹100</p>
+        </div>
+      </label>
+    </div>
+    
+            
+       
+  
+  
+    
+  
+  
+        
+    </fieldset>
+  
+  
+      </form>
+    </div>
+    <div class="button-container">
+      <button id="back-button">Back</button>
+      <button id="next-button">Next</button>
+  </div>
+    <p><span id="total-cost">₹0</span></p>
+    <h1 class="updated-amount"><span id="updatedAmount"></span></h1>
+  
+   <script>
+    
+    const optionCards = document.querySelectorAll('.option-card');
+  const inputs = document.querySelectorAll('input[type=radio], input[type=checkbox]');
+  const totalCostElement = document.getElementById('total-cost');
+
+  
+  
+  var queryString = window.location.search;
+  var urlParams = new URLSearchParams(queryString);
+  var updatedAmount = urlParams.get('amount');
+  
+  document.getElementById("updatedAmount").innerHTML = updatedAmount;
+  
+  // Store the selected options in localStorage
+  function storeSelectedOptions() {
+    const selectedOptions = [];
+  
+    inputs.forEach((input) => {
+      if (input.checked) {
+        const optionCard = input.closest('.option-card');
+        const optionTitle = optionCard.querySelector('h3').textContent;
+  
+        selectedOptions.push(optionTitle);
+  
+      }
+    });
+  
+    localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
+  }
+  
+  function deselectAll() {
+    optionCards.forEach((optionCard) => {
+      optionCard.classList.remove('selected');
+    });
+  }
+  
+  function updateTotalCost() {
+    let totalCost = 0;
+  
+    inputs.forEach((input) => {
+      if (input.checked) {
+        const optionCard = input.closest('.option-card');
+        const costElement = optionCard.querySelector('.option-info p:last-of-type');
+        const cost = Number(costElement.textContent.replace(/[^0-9.-]+/g,""));
+  
+        totalCost += cost;
+      }
+    });
+  
+    return totalCost;
+  }
+  
+  function calculateUpdatedTotal() {
+    const totalCost = updateTotalCost();
+    const parsedAmount = parseInt(updatedAmount, 10);
+    const updatedTotal = isNaN(parsedAmount) ? totalCost : parsedAmount + totalCost;
+    return updatedTotal;
+  }
+  
+  function storeUpdatedTotal() {
+    const updatedTotal = calculateUpdatedTotal();
+    localStorage.setItem('updatedTotal', updatedTotal);
+  }
+  
+  function redirectToQuote() {
+    const updatedTotal = calculateUpdatedTotal();
+    localStorage.setItem('updatedTotal', updatedTotal);
+    storeSelectedOptions(); // call storeSelectedOptions function
+    window.location.href = "quotess.html";
+  }
+  
+  inputs.forEach((input) => {
+    input.addEventListener('change', (event) => {
+      const selectedOptionCard = event.target.closest('.option-card');
+      deselectAll();
+      selectedOptionCard.classList.add('selected');
+      totalCostElement.textContent = ` ₹${updateTotalCost()}`;
+      storeSelectedOptions(); // call storeSelectedOptions function
+    });
+  });
+  
+  var backButton = document.getElementById("back-button");
+  backButton.addEventListener("click", function() {
+    window.location.href = "home.html";
+  });
+  
+  var nextButton = document.getElementById("next-button");
+  nextButton.addEventListener("click", redirectToQuote);
+  </script>
+  

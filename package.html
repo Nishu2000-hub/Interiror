@@ -1,0 +1,330 @@
+<head>
+    <link rel="stylesheet" href="kitchen-option.css">
+  </head>
+  
+  <style>
+   
+    #total-amount {
+        position: absolute;
+  top: 0;
+  right: 0;
+  padding: 25px;
+    }
+    .layout-option input[type="radio"] {
+            display: none;
+        }
+    
+        .layout-option label {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            padding-left: 35px;
+            margin-bottom: 12px;
+        }
+    
+        .layout-option label:before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 1px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+        }
+    
+        .layout-option input[type="radio"]:checked + label:before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            left: 5px;
+            bottom: 6px;
+            background-color: #007bff;
+            border-radius: 50%;
+        }
+     
+  .itinerary-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 9999;
+  }
+
+  .itinerary-container h2 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+
+  .itinerary-container p {
+    font-size: 14px;
+    margin: 0;
+  }
+  /* .options-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+
+    .layout-option {
+        flex-basis: 33%;
+        padding: 10px;
+    }
+
+    .layout-option img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .layout-amount {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .layout-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .layout-description {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .layout-features {
+        font-size: 14px;
+        margin-bottom: 5px;
+    } */
+
+
+  </style>
+<div class="itinerary-container">
+  <h2>Your Selection</h2>
+  <p id="selected-option"></p>
+  <p id="surface-area"></p>
+  <p id="package-cost">Total Cost: ₹0</p> 
+</div>
+
+    <div class="container">
+        <h1 class="text-center">Select Your Package</h1>
+        <div class="block Zhm3">
+            <div class="layout-option" id="option1">
+                <input type="radio" name="layout" id="layout1" value="130000">
+                <label for="layout1">
+                    <img src="Essentials Package.png" alt="Layout 1">
+                    <p class="layout-amount">&#8377; 1,30,000</p>
+                    <p>Essentials &#8377;&#8377;</p>
+                    <h4> A range of basic units and acessories.</h4>
+        <h6>Materials    -   MDF ;<br>
+          Granite      -   NO;<br>
+         
+          Finish       -   MATTE LAMINATE;<br>
+          Accessories  -   BASIC;<br>
+          Services     -   Painting ,Plumbing ,Platform ,Electrical, Dado;<br>
+          Appliances   -   Faucets & Sink, Hob<br>
+          </h6>
+          <h5>&#10003; Affordable pricing <br>
+            &#10003; Convenient designs <br>
+            &#10003; Basic accessories </h5>
+                </label>
+            </div>
+            <div class="layout-option" id="option2">
+                <input type="radio" name="layout" id="layout2" value="250000">
+                <label for="layout2">
+                    <img src="Premium Package.png" alt="Layout 2">
+                    <p class="layout-amount">&#8377; 2,50,000</p>
+                    <p>Premium &#8377;&#8377;&#8377;</p>
+                    <h4>An exquisite offering with sleek fixtures,hardware.</h4>
+                   <h6> Materials    -   MDF/HDFHMR ;<br>
+          Granite      -   NO;<br>
+        
+          Finish       -   HGL LAMINATE;<br>
+          Accessories  -   Intermediate; <br>
+          Services     -   Painting, Plumbing, Platform, Electrical, Dado;<br>
+          Appliances   -   Faucets & Sink, Hob, Chimney<br> </h6>
+        <h5>&#10003; Mid-range pricing <br>
+          &#10003; Premium designs <br>
+          &#10003; Wide range  </h5>
+                </label>
+            </div>
+            <div class="layout-option" id="option3">
+                <input type="radio" name="layout" id="layout3" value="350000">
+                <label for="layout3">
+                    <img src="Luxe Package.png" alt="Layout 3">
+                    <p class="layout-amount">&#8377; 3,50,000</p>
+                    <p>Luxe &#8377;&#8377;&#8377;&#8377;</p>
+                    <h4>A swanky kitchen package.</h4>
+                    <h6> Materials    -   MR Plywood;<br>
+                      Granite      -   YES;<br>
+                      Finish       -   Matte LAMINATE;<br>
+                      Accessories  -   Luxury; <br>
+                      Services     -   Painting, Plumbing, Platform, Electrical, Dado;<br>
+                      Appliances   -   Faucets & Sink, Hob, Chimney,Built-in Microwave,oven,Refrigerator<br> </h6>
+        <h5>&#10003; Elite pricing <br>
+          &#10003; Lavish designs <br>
+          &#10003; Extensive range </h5>
+                </label>
+            </div>
+            <div class="layout-option" id="option4">
+                <input type="radio" name="layout" id="layout4" value="0">
+                <label for="layout4">
+                  <img src="build.jpg" alt="Layout 4">
+
+                    <p class="layout-amount"></p>
+                    <p>Built Your Own Package</p>
+                    <h4>A flexible, built-to-suit option that lets you pick and choose from a collection of well-crafted finishes and accessories to select.</h4>
+                    <h6>&#10003; Customised pricing <br>
+                      &#10003; Flexible designs <br>
+                      &#10003; Range of accessories to pick from </h6>
+                </label>
+            </div>
+        </div>
+        <div class="button-container">
+            <button id="back-button">Back</button>
+            <button id="next-button">Next</button>
+        </div>
+
+
+    
+  </div>
+  
+  <script>
+//      const selectedOption = localStorage.getItem("selectedOption");
+//   const surfaceArea = localStorage.getItem("surfaceArea");
+
+
+//   const radioButtons = document.querySelectorAll('input[type="radio"]');
+// const packageCost = document.getElementById("package-cost");
+
+//   // Set the retrieved values in the itinerary container
+//   document.getElementById("selected-option").textContent = selectedOption;
+//   document.getElementById("surface-area").textContent = surfaceArea;
+// // const surfaceArea = Number(localStorage.getItem("surfaceArea"));
+
+// let selectedPackageCost = 0;
+
+// // Add event listener to each radio button
+// radioButtons.forEach(function(radio) {
+//   radio.addEventListener("change", function() {
+    
+//     // Get the value of the selected radio button
+//     selectedPackageCost = Number(radio.value);
+//     console.log(selectedPackageCost)
+//     console.log(surfaceArea)
+//     const surfaceAreaRegex = /[\d\.]+/;
+//     const surfaceAreas = parseFloat(surfaceArea.match(surfaceAreaRegex)[0]);
+//     console.log(surfaceAreas)
+
+//     // Calculate the total cost by multiplying the selected package cost with the surface area
+//     const totalCost = selectedPackageCost * surfaceAreas;
+    
+//     // Display the total cost in the itinerary
+//     packageCost.textContent = "Total Cost: ₹" + totalCost;
+//   });
+// });
+
+const selectedOption = localStorage.getItem("selectedOption");
+const surfaceArea = localStorage.getItem("surfaceArea");
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+const packageCost = document.getElementById("package-cost");
+const nextButton = document.getElementById("next-button");
+
+// Set the retrieved values in the itinerary container
+document.getElementById("selected-option").textContent = selectedOption;
+document.getElementById("surface-area").textContent = surfaceArea;
+
+let selectedPackageCost = 0;
+
+// Add event listener to each radio button
+radioButtons.forEach(function (radio) {
+  radio.addEventListener("change", function () {
+    // Get the value of the selected radio button
+    selectedPackageCost = Number(radio.value);
+
+    const surfaceAreaRegex = /[\d\.]+/;
+    const surfaceAreas = parseFloat(surfaceArea.match(surfaceAreaRegex)[0]);
+
+    // Calculate the total cost by multiplying the selected package cost with the surface area
+    const totalCost = selectedPackageCost * surfaceAreas;
+
+    // Display the total cost in the itinerary
+    packageCost.textContent = "Total Cost: ₹" + totalCost;
+  });
+});
+
+// Add event listener to the "Next" button
+nextButton.addEventListener("click", function () {
+  // Get the selected package ID
+  const selectedPackageId = document.querySelector(
+    'input[name="layout"]:checked'
+  ).id;
+
+  // Check if the selected package ID is not "layout4"
+  if (selectedPackageId !== "layout4") {
+    // Redirect to the new page
+    window.location.href = "new.html";
+  }
+});
+
+</script>
+
+
+
+
+
+
+<!-- //     const urlParams = new URLSearchParams(window.location.search);
+// 		const amount = urlParams.get('amount');
+
+// 		let totalAmountElement = document.createElement('p');
+// 		totalAmountElement.textContent = 'Total Amount: ₹' + amount;
+
+// 		let containerDiv = document.getElementById('total-amount');
+// 		containerDiv.appendChild(totalAmountElement);
+
+
+// function calculateAndUpdateAmount() {
+//   var selectedRadio = document.querySelector('input[name="layout"]:checked');
+//   if (!selectedRadio) {
+//     alert('Please select a package option');
+//     return;
+//   }
+
+//   var selectedValue = parseInt(selectedRadio.value);
+//   var selectedImageSrc = selectedRadio.parentNode.querySelector('img').src;
+//   var updatedAmount = parseInt(amount) + selectedValue;
+//   var updatedAmountq = parseInt(amount)
+
+//   var updatedAmountcustom = parseInt(amount)
+
+//   var selectedPackage = selectedRadio.parentNode.querySelector('h4').textContent;
+//   var selectedPackageDetails = selectedRadio.parentNode.querySelector('h6').textContent;
+
+//   if (selectedRadio.id === "layout4") {
+//     var url = 'custom.html?amount=' + updatedAmountq;
+
+//     window.location.href = url;
+//     console.log(updatedAmount)
+//   } else {
+//     var url = 'quote.html?amount=' + updatedAmount + '&package=' + encodeURIComponent(selectedPackage) + '&details=' + encodeURIComponent(selectedPackageDetails) + '&image=' + encodeURIComponent(selectedImageSrc);
+
+//     window.location.href = url;
+//   }
+// }
+
+
+
+
+//         var backButton = document.getElementById("back-button");
+//         backButton.addEventListener("click", function() {
+//   window.location.href = "measurements.html";
+// }); -->

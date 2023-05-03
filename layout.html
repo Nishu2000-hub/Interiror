@@ -1,0 +1,357 @@
+   <head>
+        <link rel="stylesheet" href="kitchen-option.css">
+    </head>
+    
+    <style>
+
+.amount-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 25px;
+}
+
+    
+        .layout-option input[type="radio"] {
+            display: none;
+        }
+    
+        .layout-option label {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            padding-left: 35px;
+            margin-bottom: 12px;
+        }
+    
+        .layout-option label:before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 1px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+        }
+    
+        .layout-option input[type="radio"]:checked + label:before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            left: 5px;
+            bottom: 6px;
+            background-color: #007bff;
+            border-radius: 50%;
+        }
+ 
+.itinerary-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f8f8f8;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 9999;
+}
+
+.itinerary-container h2 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+
+.itinerary-container p {
+  font-size: 14px;
+  margin: 0;
+}
+
+#back-button, #next-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 170px; /* Add spacing between the buttons */
+}
+
+#back-button:hover, #next-button:hover {
+  background-color: #3e8e41;
+}
+    </style>
+    
+
+ 
+        <div class="itinerary-container">
+      <h2>Your Selection</h2>
+      <p id="selected-option"></p>
+    </div> 
+       <div class="container">
+        <h1 class="text-center">Select Layout for Your Kitchen</h1>
+        <div class="block Zhm3">
+          <div class="layout-option" id="option1">
+            <input type="radio" name="layout" id="layout1">
+            <label for="layout1">
+              <img src="L shaped.png" alt="Layout 1">
+              <p>L Shaped</p>
+            </label>
+          </div>
+          <div class="layout-option" id="option2">
+            <input type="radio" name="layout" id="layout2" >
+            <label for="layout2">
+              <img src="Straight.png" alt="Layout 2">
+              <p>Straight</p>
+            </label>
+          </div>
+          <div class="layout-option" id="option3">
+            <input type="radio" name="layout" id="layout3">
+            <label for="layout3">
+              <img src="U shaped.png" alt="Layout 3">
+              <p>U Shaped</p>
+            </label>
+          </div>
+          <div class="layout-option" id="option4">
+            <input type="radio" name="layout" id="layout4" >
+            <label for="layout4">
+              <img src="Parallel.png" alt="Layout 4">
+              <p>Parallel</p>
+            </label>
+          </div>
+        </div>
+        <div class="button-container">
+          <button id="back-button">Back</button>
+          <button id="next-button">Next</button>
+        </div>
+      </div>
+      
+      <script>
+
+
+var option1 = document.getElementById("layout1");
+var option2 = document.getElementById("layout2");
+var option3 = document.getElementById("layout3");
+var option4 = document.getElementById("layout4");
+var selectedOption = document.getElementById("selected-option");
+
+option1.addEventListener("click", function() {
+  selectedOption.innerText = "L Shaped";
+});
+
+option2.addEventListener("click", function() {
+  selectedOption.innerText = "Straight";
+});
+
+option3.addEventListener("click", function() {
+  selectedOption.innerText = "U Shaped";
+});
+
+option4.addEventListener("click", function() {
+  selectedOption.innerText = "Parallel";
+});
+
+        var selectedOption;
+        
+        var backButton = document.getElementById("back-button");
+        var nextButton = document.getElementById("next-button");
+        var options = document.getElementsByName("layout");
+        var errorMessage = document.getElementById("error-message");
+
+
+        // var options = document.getElementsByName("layout");
+      
+      for (var i = 0; i < options.length; i++) {
+      options[i].addEventListener("click", function() {
+      localStorage.setItem("selectedLayout", this.id);
+      });
+      }
+        backButton.addEventListener("click", function() {
+          window.location.href = "home.html";
+        });
+        
+
+
+        nextButton.addEventListener("click", function(event) {
+          var selectedOption = "";
+
+          for (var i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+              selectedOption = options[i].nextElementSibling.textContent.trim();
+              break;
+            }
+          }
+          
+          if (selectedOption === "") {
+      errorMessage.style.display = "block";
+      event.preventDefault(); // Prevent page navigation
+    } else {
+      var url = "measurements.html?selectedOption=" + encodeURIComponent(selectedOption);
+      window.location.href = url;
+    }
+  });
+  
+  // Add event listener to hide error message when an option is selected
+  for (var i = 0; i < options.length; i++) {
+    options[i].addEventListener("click", function() {
+      errorMessage.style.display = "none";
+    });
+  }
+         
+          // var url = "measurements.html?selectedOption=" + encodeURIComponent(selectedOption);
+          // window.location.href = url;
+    
+        // });
+      </script>
+      
+
+
+       <!-- <head>
+        <link rel="stylesheet" href="kitchen-option.css">
+      </head>
+      
+      <style>
+      
+      .amount-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 25px;
+      }
+      
+      
+        .layout-option input[type="radio"] {
+            display: none;
+        }
+      
+        .layout-option label {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            padding-left: 35px;
+            margin-bottom: 12px;
+        }
+      
+        .layout-option label:before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 1px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+        }
+      
+        .layout-option input[type="radio"]:checked + label:before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            left: 5px;
+            bottom: 6px;
+            background-color: #007bff;
+            border-radius: 50%;
+        }
+      
+      
+      </style>
+      
+      <div class="container">
+        <h1 class="text-center">Select Layout for Your Kitchen</h1>
+        <div class="block Zhm3">
+            <div class="layout-option" id="option1">
+                <input type="radio" name="layout" id="layout1" value="25000">
+                <label for="layout1">
+                    <img src="L shaped.png" alt="Layout 1">
+                    <p class="layout-amount">&#8377; 25,000</p>
+                    <p>L Shaped</p>
+                </label>
+            </div>
+            <div class="layout-option" id="option2">
+                <input type="radio" name="layout" id="layout2" value="20000">
+                <label for="layout2">
+                    <img src="Straight.png" alt="Layout 2">
+                    <p class="layout-amount">&#8377; 20,000</p>
+                    <p>Straight</p>
+                </label>
+            </div>
+            <div class="layout-option" id="option3">
+                <input type="radio" name="layout" id="layout3" value="50000">
+                <label for="layout3">
+                    <img src="U shaped.png" alt="Layout 3">
+                    <p class="layout-amount">&#8377; 50,000</p>
+                    <p>U Shaped</p>
+                </label>
+            </div>
+            <div class="layout-option" id="option4">
+                <input type="radio" name="layout" id="layout4" value="40000">
+                <label for="layout4">
+                    <img src="Parallel.png" alt="Layout 4">
+                    <p class="layout-amount">&#8377; 40,000</p>
+                    <p>Parallel</p>
+                </label>
+            </div>
+        </div>
+        <div class="button-container">
+            <button id="back-button">Back</button>
+            <button id="next-button">Next</button>
+        </div>
+        <div class="amount-container">
+            <p class="total-amount">Total Amount:&#8377; 0</p>
+        </div>
+      </div>
+      <script>
+      
+      
+      
+        function updateTotal() {
+          var totalAmount = 0;
+          var options = document.getElementsByName("layout");
+          
+          for (var i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+              totalAmount += parseInt(options[i].value);
+            }
+          }
+          document.querySelector('.total-amount').textContent = 'Total Amount: ₹' + totalAmount;
+          localStorage.setItem('totalAmount', totalAmount);
+      
+        }
+      
+        var options = document.getElementsByName("layout");
+        for (var i = 0; i < options.length; i++) {
+          options[i].addEventListener("click", updateTotal);
+        }
+      
+        var options = document.getElementsByName("layout");
+      
+      for (var i = 0; i < options.length; i++) {
+      options[i].addEventListener("click", function() {
+      localStorage.setItem("selectedLayout", this.id);
+      });
+      }
+      
+      
+      
+      var backButton = document.getElementById("back-button");
+      var nextButton = document.getElementById("next-button");
+      
+      backButton.addEventListener("click", function() {
+      window.location.href = "home.html";
+      });
+      
+      nextButton.addEventListener("click", function() {
+      window.location.href = "measurements.html";
+      });
+      
+      
+      </script> -->

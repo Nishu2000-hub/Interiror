@@ -1,0 +1,72 @@
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+   <style>
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: flex-start;
+	}
+	
+	.card {
+		border: 1px solid #ccc;
+		box-shadow: 0 0 10px #ccc;
+		padding: 20px;
+		margin: 20px;
+		text-align: center;
+		width: 300px;
+	}
+	
+	.card img {
+		max-width: 100%;
+		height: auto;
+		margin-bottom: 10px;
+	}
+
+	.card button {
+		background-color: #4CAF50;
+		border: none;
+		color: white;
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 5px;
+	}
+</style>
+<body>
+	<h1 style="text-align: center;">Interior Design Estimator</h1>
+	<div class="container">
+		<div class="card">
+			<img src="modular-kitchen.jpg" alt="Kitchen Modular">
+			<h2>Kitchen Modular</h2>
+			<p>Get an estimated cost for your kitchen modular design.</p>
+			<button id="estimateBtn">Estimate</button>
+		</div>
+		<div class="card">
+			<img src="Swing Wardrobe.jpg" alt="Wardrobe Modular">
+			<h2>Wardrobe Modular</h2>
+			<p>Get an estimated cost for your Wardrobe modular design.</p>
+			<button id="estimateBtnw">Estimate</button>
+		</div>
+	</div>
+</body>
+<script>
+  const estimateBtn = document.getElementById('estimateBtn');
+  estimateBtn.addEventListener('click', () => {
+    window.location.href = 'layout.html';
+  });
+  
+  const estimateBtnw = document.getElementById('estimateBtnw');
+  estimateBtnw.addEventListener('click', () => {
+    window.location.href = 'wardrobe.html';
+  });
+
+
+  particlesJS.load('particles-js', 'particles.json', function() {
+    console.log('particles.js loaded');
+  });
+</script>

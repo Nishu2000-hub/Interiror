@@ -1,0 +1,514 @@
+<style>
+  .card {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 20px;
+    width: 1000px;
+    margin: 0 auto;
+  }
+  .services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  fieldset label {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  fieldset {
+    border: none;
+    margin-top: 20px;
+    text-align: center;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .option-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+    flex-basis: calc(33.33% - 20px);
+    margin-right: 20px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+  }
+
+  
+  .option-card:last-child {
+    margin-right: 0;
+  }
+  
+  .option-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .option-card.selected {
+    border: 2px solid #4CAF50;
+  }
+  
+  .option-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+
+  }
+  
+  
+  .option-card img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .option-info {
+    text-align: center;
+  }
+  
+  .option-card .option-info {
+    display: none;
+  }
+  
+  .option-card.selected .option-info {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .updated-amount {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+  
+
+  #total-cost {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+  </style>
+
+  <div class="card" style="text-align: center;">
+    <h2>Build Your Own Package</h2>
+    <form>
+  
+      <fieldset>
+        <label for="material">Select Your Material:</label>
+
+        <div class="option-card">
+          <input type="radio" id="option1" name="option" value="option1" required>
+          <label for="option1">
+            <h3>HDFHMR Material</h3>
+            <h4>Has high strength and density, and a solid screw-holding capacity.            </h4>
+            <div class="option-info">
+              <img src="HDR Material.png" alt="Option 1">
+              <p>Pro Tip: Makes for a good choice as it has load-bearing capacity at a lower cost.</p>
+              <p>Cost: ₹50</p>
+            </div>
+          </label>
+        </div>
+        
+        <div class="option-card">
+          <input type="radio" id="option2" name="option" value="option2">
+          <label for="option2">
+            <h3>MDF Material</h3>
+            <h4>Is seamless, free of knots, and has high resistance for wear & tear.</h4>
+            <div class="option-info">
+              <img src="MDF Material.jpg" alt="Option 2">
+              <p>Pro Tip: Ideal for cabinets because of their smooth, seamless surface.</p>
+              <p>Cost: ₹75</p>
+            </div>
+          </label>
+        </div>
+  
+        <div class="option-card">
+          <input type="radio" id="option3" name="option" value="option3">
+          <label for="option3">
+            <h3>MR Plywood Material</h3>
+            <h4>is moisture and termite resistant and does not wear off easily.</h4>
+            <div class="option-info">
+              <img src="MR Plywood Material.jpg" alt="Option 3">
+              <p>Pro Tip:  Works well if you're on a budget and looking for a durable material.</p>
+              <p>Cost: ₹100</p>
+            </div>
+          </label>
+        </div>
+        <div class="option-card">
+          <input type="radio" id="option4" name="option" value="option4">
+          <label for="option4">
+            <h3>BWR Plywood Material</h3>
+            <h4>Is water resistant and works well in areas prone to water exposure.</h4>
+            <div class="option-info">
+              <img src="BWR Plywood material.jpg" alt="Option 4">
+              <p>Pro Tip: Pick this if you don’t want to be worried about frequent exposure to water.</p>
+              <p>Cost: ₹150</p>
+            </div>
+          </label>
+        </div>
+        <div class="option-card">
+          <input type="radio" id="option5" name="option" value="option5">
+          <label for="option5">
+            <h3>BWP Plywood Material</h3>
+            <h4>Is waterproof and withstands prolonged exposure to water and moisture.</h4>
+            <div class="option-info">
+              <img src="BWP Plywood Material.jpg" alt="Option 5">
+              <p>Pro Tip: Looking for a waterproof material? Then consider this one!</p>
+              <p>Cost: ₹200</p>
+            </div>
+          </label>
+        </div>
+
+
+       
+          <label for="granite">Select Your Granite Option:</label>
+
+          <div class="option-card">
+            <input type="radio" id="option1" name="granite" value="yes" required>
+            <label for="option1">
+              <h3>Yes(Granite)</h3>
+              <h4>Add granite to your package.</h4>
+              <div class="option-info">
+                <p>Cost:₹100</p>
+              </div>
+            </label>
+          </div>
+          
+
+  <div class="option-card">
+    <input type="radio" id="option2" name="granite" value="no">
+    <label for="option2">
+      <h3>No(Granite)</h3>
+      <h4>Do not add granite to your package.</h4>
+      <div class="option-info">
+        <p>Cost: ₹0</p>
+      </div>
+    </label>
+  </div>
+          
+        
+  
+          <label for="loft">Select Your Loft Option:</label>
+
+          <div class="option-card">
+            <input type="radio" id="option1" name="loft" value="yes" required>
+            <label for="option1">
+              <h3>Yes(Loft)</h3>
+              <h4>Add Loft to your package.</h4>
+              <div class="option-info">
+                <p>Cost: ₹100</p>
+              </div>
+            </label>
+          </div>
+          
+          
+ <div class="option-card">
+  <input type="radio" id="option2" name="loft" value="no">
+  <label for="option2">
+    <h3>No(Loft)</h3>
+    <h4>Do not add Loft to your package.</h4>
+    <div class="option-info">
+      <p>Cost: ₹0</p>
+    </div>
+  </label>
+</div>
+
+         
+          <label for="finish">Pick a finish for base & wall cabinets:</label>
+
+          <div class="option-card">
+            <input type="radio" id="option1" name="base" value="option1" required>
+            <label for="option1">
+              <h3>Matte Laminate finish</h3>
+              <h4>Is a smooth, durable finish which gives a clean and rich look.</h4>
+              <div class="option-info">
+                <img src="Matte Laminate.png" alt="Option 1">
+                <p>Pro Tip: Going for that muted, smooth look for your kitchen? This one’s for you.</p>
+                <p>Cost: ₹50</p>
+              </div>
+            </label>
+          </div>
+          
+          <div class="option-card">
+            <input type="radio" id="option2" name="base" value="option2">
+            <label for="option2">
+              <h3>HGL Laminate finish</h3>
+              <h4>Is glossy with solid colours that uplifts a space with its shiny finish.</h4>
+              <div class="option-info">
+                <img src="HGL Laminate.png" alt="Option 2">
+                <p>Pro Tip: Always wanted magazine-like glossy kitchen cabinets? Choose this!</p>
+                <p>Cost: ₹75</p>
+              </div>
+            </label>
+          </div>
+    
+          
+  <div class="option-card">
+    <input type="radio" id="option3" name="base" value="option3">
+    <label for="option3">
+      <h3>Matte Membrane finish</h3>
+      <h4>Comes with a smooth surface and has better grooving ability.</h4>
+      <div class="option-info">
+        <img src="Matte Laminate.png" alt="Option 3">
+        <p>Pro Tip: Go for this if you want a seamless finish that sits well in any kind of kitchen.</p>
+        <p>Cost: ₹100</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="option4" name="base" value="option4">
+    <label for="option4">
+      <h3>HGL Membrane finish</h3>
+      <h4>Has a lustrous surface that enhances your modular kitchen.              </h4>
+      <div class="option-info">
+        <img src="HGL Membrane.png" alt="Option 4">
+        <p>Pro Tip: Want those strong, shiny cabinets with a pop of colour? Consider this!</p>
+        <p>Cost:₹150</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="option5" name="base" value="option5">
+    <label for="option5">
+      <h3>Anti-scratch Acrylic finish</h3>
+      <h4>Is an elegant, reflective, glossy finish that is scratch resistant.</h4>
+      <div class="option-info">
+        <img src="Anti Scratch Acrylic.png" alt="Option 5">
+        <p>Pro Tip: Dreaming of a chic kitchen with a touch of luxury? Go for this one.</p>
+        <p>Cost: ₹200</p>
+      </div>
+    </label>
+  </div>
+
+
+        
+          
+     
+
+
+  
+
+      <label for="services">Services:</label>
+
+      <div class="option-card">
+        <input type="checkbox" id="option1" name="option" value="option1" required>
+        <label for="option1">
+          <h3>Painting Service</h3>
+          <div class="option-info">
+            <img src="Painting Service.png" alt="Option 1">
+            <p>Cost: ₹10</p>
+          </div>
+        </label>
+      </div>
+      
+      <div class="option-card">
+        <input type="checkbox" id="option2" name="option" value="option2">
+        <label for="option2">
+          <h3>Plumbing Service</h3>
+          <div class="option-info">
+            <img src="Plumbing Service.png" alt="Option 2">
+            <p>Cost:₹10</p>
+          </div>
+        </label>
+      </div>
+
+     
+      <div class="option-card">
+        <input type="checkbox" id="option3" name="option" value="option3">
+        <label for="option3">
+          <h3>Electrical Service</h3>
+          <div class="option-info">
+            <img src="Electrical Service.png" alt="Option 3">
+            <p>Cost:₹10</p>
+          </div>
+        </label>
+      </div>
+      
+      <div class="option-card">
+        <input type="checkbox" id="option4" name="option" value="option4">
+        <label for="option4">
+          <h3>Platform Service</h3>
+          <div class="option-info">
+            <img src="Platform Service.png" alt="Option 4">
+            <p>Cost: ₹10</p>
+          </div>
+        </label>
+      </div>
+      <div class="option-card">
+        <input type="checkbox" id="option5" name="option" value="option5">
+        <label for="option5">
+          <h3>Dado Service</h3>
+          <div class="option-info">
+            <img src="Dado Service.png" alt="Option 5">
+            <p>Cost: ₹10</p>
+          </div>
+        </label>
+      </div>
+
+      <label for="accessories">Accessories:</label>
+
+      <div class="option-card">
+        <input type="radio" id="option1" name="acce" value="option1" required>
+        <label for="option1">
+          <h3>Basic Accessories</h3>
+          <h4>A basic range of accessories usually required to get your ideal kitchen started.</h4>
+          <div class="option-info">
+            <img src="Basic Accessories.png" alt="Option 1">
+            <p>Pro Tip: Consider this if you need basic units within a budget for a comfortable cooking experience.</p>
+            <p>Cost: ₹50</p>
+          </div>
+        </label>
+      </div>
+      
+      <div class="option-card">
+        <input type="radio" id="option2" name="acce" value="option2">
+        <label for="option2">
+          <h3>Intermediate Accessories</h3>
+          <h4>A fine range of fittings, cabinets, and more for a smooth culinary experience.</h4>
+          <div class="option-info">
+            <img src="Intermediate Accessories.png" alt="Option 2">
+            <p>Pro Tip: Pick this if you experiment with cooking and need more units to ease your time in the kitchen.</p>
+            <p>Cost: ₹75</p>
+          </div>
+        </label>
+      </div>
+
+     
+
+      <div class="option-card">
+        <input type="radio" id="option3" name="acce" value="option3">
+        <label for="option3">
+          <h3>Premium Assessories</h3>
+          <h4>A showstopper kitchen with an exclusive range you were always looking for.</h4>
+          <div class="option-info">
+            <img src="Premium Accessories.png" alt="Option 3">
+            <p>Pro Tip: If you're a passionate cook who needs an exclusive range of accessories, this one's for you.</p>
+            <p>Cost: ₹100</p>
+          </div>
+        </label>
+      </div>
+  </fieldset>
+
+
+    </form>
+  </div>
+  <div class="button-container">
+    <button id="back-button">Back</button>
+    <button id="next-button">Next</button>
+</div>
+  <p><span id="total-cost">₹0</span></p>
+  <h1 class="updated-amount">Past Selection: ₹<span id="updatedAmount"></span></h1>
+
+ <script>
+  
+  const optionCards = document.querySelectorAll('.option-card');
+const inputs = document.querySelectorAll('input[type=radio], input[type=checkbox]');
+const totalCostElement = document.getElementById('total-cost');
+
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var updatedAmount = urlParams.get('amount');
+
+document.getElementById("updatedAmount").innerHTML = updatedAmount;
+
+// Store the selected options in localStorage
+function storeSelectedOptions() {
+  const selectedOptions = [];
+
+  inputs.forEach((input) => {
+    if (input.checked) {
+      const optionCard = input.closest('.option-card');
+      const optionTitle = optionCard.querySelector('h3').textContent;
+
+      selectedOptions.push(optionTitle);
+
+    }
+  });
+
+  localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
+}
+
+function deselectAll() {
+  optionCards.forEach((optionCard) => {
+    optionCard.classList.remove('selected');
+  });
+}
+
+function updateTotalCost() {
+  let totalCost = 0;
+
+  inputs.forEach((input) => {
+    if (input.checked) {
+      const optionCard = input.closest('.option-card');
+      const costElement = optionCard.querySelector('.option-info p:last-of-type');
+      const cost = Number(costElement.textContent.replace(/[^0-9.-]+/g,""));
+
+      totalCost += cost;
+    }
+  });
+
+  return totalCost;
+}
+
+function calculateUpdatedTotal() {
+  const totalCost = updateTotalCost();
+  const parsedAmount = parseInt(updatedAmount, 10);
+  const updatedTotal = isNaN(parsedAmount) ? totalCost : parsedAmount + totalCost;
+  return updatedTotal;
+}
+
+function storeUpdatedTotal() {
+  const updatedTotal = calculateUpdatedTotal();
+  localStorage.setItem('updatedTotal', updatedTotal);
+}
+
+function redirectToQuote() {
+  const updatedTotal = calculateUpdatedTotal();
+  localStorage.setItem('updatedTotal', updatedTotal);
+  storeSelectedOptions(); // call storeSelectedOptions function
+  window.location.href = "quotes.html";
+}
+
+inputs.forEach((input) => {
+  input.addEventListener('change', (event) => {
+    const selectedOptionCard = event.target.closest('.option-card');
+    deselectAll();
+    selectedOptionCard.classList.add('selected');
+    totalCostElement.textContent = `₹${updateTotalCost()}`;
+    storeSelectedOptions(); // call storeSelectedOptions function
+  });
+});
+
+var backButton = document.getElementById("back-button");
+backButton.addEventListener("click", function() {
+  window.location.href = "package.html";
+});
+
+var nextButton = document.getElementById("next-button");
+nextButton.addEventListener("click", redirectToQuote);
+</script>
+
+
+
+
+
+
+
+
+

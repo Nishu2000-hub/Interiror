@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Measurement</title>
+    <style>     
+#layout-image {
+  max-width: 100%;
+  height: auto;
+}
+    .frame .selected-amount {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+#measurement-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+      .frame {
+        width: 400px;
+        height: 100%;
+        margin: 0 auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+  justify-content: center;
+  align-items: center;
+      }
+
+      .image-container {
+        text-align: center;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .input-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      label {
+        font-weight: bold;
+        margin-right: 10px;
+        text-align: center;
+
+      }
+
+      input[type="number"] {
+        width: 100px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      select {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+#area-dropdowns {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+#total-amount {
+    position: absolute;
+  top: 0;
+  right: 0;
+  padding: 25px;
+  
+}
+
+
+.itinerary-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f8f8f8;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 9999;
+}
+
+.itinerary-container h2 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+
+.itinerary-container p {
+  font-size: 14px;
+  margin: 0;
+}
+
+      
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  </head>
+  <body>
+    <div class="itinerary-container">
+      <h2>Your Selection</h2>
+      <p id="selected-option"></p>
+      <p id="surface-area"></p>
+
+    </div>
+   
+    
+    <!-- <div id="surface-area">Total Surface Area: 0.00 sq. ft</div> -->
+
+
+<h2 style="text-align: center;">Review Measurement</h2>
+
+<div class="frame">
+
+  <form id="measurement-form">
+    <img id="layout-image" src="" alt="Layout Image">
+
+    <div id="area-dropdowns"></div>
+
+  </form>
+
+</div>
+
+
+
+<div class="flex justify-between">
+  <a href="layout.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Back</a>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="saveAndRedirect()">Next</button>
+
+</div>
+
+<script>
+  let selectedLayout = localStorage.getItem('selectedLayout');
+
+  let layoutImage = document.getElementById('layout-image');
+
+  switch (selectedLayout) {
+    case 'layout1':
+      layoutImage.src = 'L Shaped measure.png';
+      break;
+    case 'layout2':
+      layoutImage.src = 'Straight measure.png';
+      break;
+    case 'layout3':
+      layoutImage.src = 'U Shaped measure.png';
+      break;
+    case 'layout4':
+      layoutImage.src = 'Parallel measure.png';
+      break;
+  }
+
+  const layoutAreaMap = {
+    "layout1": 2,
+    "layout2": 1,
+    "layout3": 3,
+    "layout4": 2
+  };
+
+  const areaDropdownsContainer = document.getElementById("area-dropdowns");
+  const numDropdowns = layoutAreaMap[selectedLayout];
+
+for (let i = 0; i < numDropdowns; i++) {
+
+  const areaLabel = document.createElement("label");
+areaLabel.innerHTML = "Area " + String.fromCharCode(65 + i) + " ";
+areaDropdownsContainer.appendChild(areaLabel);
+
+const areaElement = document.createElement('span');
+areaElement.classList.add('area');
+areaElement.style.marginRight = '10px';
+// areaElement.textContent = '0.00 sq. ft';
+areaDropdownsContainer.appendChild(areaElement);
+
+
+  const lengthLabel = document.createElement("label");
+  lengthLabel.innerHTML = "Length " + String.fromCharCode(65 + i) + ": ";
+  areaDropdownsContainer.appendChild(lengthLabel);
+
+  const lengthDropdown = document.createElement("select");
+  lengthDropdown.style.width = "100%";
+  for (let j = 1; j <= 20; j++) {
+    const option = document.createElement("option");
+    option.value = j;
+    option.text = j + " ft";
+    lengthDropdown.appendChild(option);
+
+    lengthDropdown.addEventListener('change', updateSurfaceArea);
+     
+
+  }
+  areaDropdownsContainer.appendChild(lengthDropdown);
+
+  const breadthLabel = document.createElement("label");
+  breadthLabel.innerHTML = "Breadth " + String.fromCharCode(65 + i) + ": ";
+  areaDropdownsContainer.appendChild(breadthLabel);
+
+  const breadthDropdown = document.createElement("select");
+  breadthDropdown.style.width = "100%";
+  for (let j = 1; j <= 20; j++) {
+    const option = document.createElement("option");
+    option.value = j;
+    option.text = j + " ft";
+    breadthDropdown.appendChild(option);
+    breadthDropdown.addEventListener('change', updateSurfaceArea);
+
+
+  }
+  areaDropdownsContainer.appendChild(breadthDropdown);
+
+
+
+  const heightLabel = document.createElement("label");
+  heightLabel.innerHTML = "height " + String.fromCharCode(65 + i) + ": ";
+  areaDropdownsContainer.appendChild(heightLabel);
+
+  const heightDropdown = document.createElement("select");
+  heightDropdown.style.width = "100%";
+  for (let j = 1; j <= 20; j++) {
+    const option = document.createElement("option");
+    option.value = j;
+    option.text = j + " ft";
+    heightDropdown.appendChild(option);
+    heightDropdown.addEventListener('change', updateSurfaceArea);
+
+  }
+  areaDropdownsContainer.appendChild(heightDropdown);
+  if (i < numDropdowns - 1) {
+    const spacer = document.createElement("br");
+    spacer.style.marginBottom = "20px";
+    areaDropdownsContainer.appendChild(spacer);
+  }
+}
+function calculateSurfaceArea(length, breadth, height) {
+  return 2 * ((length * breadth) + (breadth * height) + (height * length));
+}
+
+function updateSurfaceArea() {
+  let areas = document.querySelectorAll('select');
+  let surfaceArea = 0;
+  for (let i = 0; i < areas.length; i += 3) {
+    let length = parseInt(areas[i].value);
+    let breadth = parseInt(areas[i+1].value);
+    let height = parseInt(areas[i+2].value);
+    let area = calculateSurfaceArea(length, breadth, height);
+    let areaElement = areas[i].parentElement.getElementsByClassName('area')[0];
+    // console.log(areaElement)
+    // areaElement.textContent = area.toFixed(2) + ' sq. ft';
+    surfaceArea += area;
+  }
+  let itineraryElement = document.getElementById('itinerary');
+
+  let surfaceAreaElement = document.getElementById('surface-area');
+  surfaceAreaElement.textContent = 'Total Surface Area: ' + surfaceArea.toFixed(2) + ' sq. ft';
+  itineraryElement.appendChild(surfaceAreaElement);
+
+}
+
+var selectedOption = decodeURIComponent(window.location.search.substr(1)).split("=")[1];
+document.getElementById("selected-option").innerHTML = selectedOption;
+
+function saveAndRedirect() {
+  // Get the selected options and surface area values
+  const selectedOption = document.getElementById("selected-option").textContent;
+  const surfaceArea = document.getElementById("surface-area").textContent;
+
+  // Save the selected options and surface area values to localStorage
+  localStorage.setItem("selectedOption", selectedOption);
+  localStorage.setItem("surfaceArea", surfaceArea);
+
+  // Redirect to itinerary.html page
+  window.location.href = "package.html";
+}
+
+
+
+
+</script>
+</body>
+
+
+
+<!-- 
+// var backButton = document.getElementById("back-button");
+//         var nextButton = document.getElementById("next-button");
+// backButton.addEventListener("click", function() {
+//           window.location.href = "layout.html";
+//         });
+
+//         nextButton.addEventListener("click", function() {
+//           window.location.href = "package.html";
+//         }); -->
+
+
+
+<!-- // for (let i = 0; i < numDropdowns; i++) {
+  //   const dropdownLabel = document.createElement("label");
+  //   dropdownLabel.innerHTML = String.fromCharCode(65 + i) + ": ";
+  //   areaDropdownsContainer.appendChild(dropdownLabel);
+  
+  //   const dropdown = document.createElement("select");
+  //   dropdown.style.width = "100%"; // 
+  //   for (let j = 1; j <= 20; j++) {
+  //     const option = document.createElement("option");
+  //     option.value = j;
+  //     option.text = j + " ft"; //
+  //     dropdown.appendChild(option);
+  //   }
+  //   areaDropdownsContainer.appendChild(dropdown);
+  
+  //   if (i < numDropdowns - 1) {
+  //     const spacer = document.createElement("br");
+  //     spacer.style.marginBottom = "20px";
+  //     areaDropdownsContainer.appendChild(spacer);
+  //   }
+  // } -->

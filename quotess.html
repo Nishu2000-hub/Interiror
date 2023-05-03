@@ -1,0 +1,115 @@
+<style>
+    .card {
+    background-color: F2B6A0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 80px;
+  }
+  
+   #image-container, #package-summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+  
+  #image-container {
+    position: relative;
+  }
+  
+   Style for the updated amount */
+   #updatedAmountContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #131313;
+    color: #141313;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    font-style: italic;
+  
+  
+  }
+   #updatedAmountContainer:hover {
+    opacity: 1;
+  }
+  
+  #updatedAmount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #010f01;
+    font-style: italic;
+  
+  }
+  
+   Style for the package summary */
+   #package-summary {
+    margin-top: 30px;
+    text-align: center;
+    font-style: italic;
+  
+  } 
+  
+   #selected-package, #package-details {
+    font-style: italic;
+  } 
+  @media print {
+  #download-pdf {
+    display: none;
+  }
+}
+
+   
+  
+  
+  
+   </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+<div class="card">
+    <div id="package-summary">
+        <h1>Your Package Summary</h1>
+        <p>Total Amount: ₹<span id="total-amount"></span></p>
+        <ul id="selected-options"></ul>
+
+        <button id="download-pdf">Download as PDF</button>
+
+      
+
+    </div>
+</div>
+
+<script>
+     var queryString = window.location.search;
+  var urlParams = new URLSearchParams(queryString);
+  var updatedTotal = localStorage.getItem('updatedTotal');
+  document.getElementById('total-amount').innerHTML = updatedTotal;
+
+  
+  const selectedOptions = JSON.parse(localStorage.getItem('selectedOptions'));
+
+  // Display selected options
+  const selectedOptionsList = document.getElementById('selected-options');
+  selectedOptions.forEach((option) => {
+    const li = document.createElement('li');
+    li.textContent = option;
+    selectedOptionsList.appendChild(li);
+  });
+  const downloadPdfButton = document.getElementById('download-pdf');
+downloadPdfButton.addEventListener('click', () => {
+  const card = document.querySelector('.card');
+  downloadPdfButton.remove(); // remove the button from the DOM
+
+  html2pdf(card);
+
+});
+
+
+
+
+</script>
