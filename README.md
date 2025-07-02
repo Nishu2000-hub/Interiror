@@ -1,10 +1,12 @@
 classDiagram
+
     App <|-- HomePage
     App <|-- MenuPage
     App <|-- CartPage
     MenuPage <|-- MenuList
     MenuPage ..> CoffeeModel : uses
 ```mermaid
+
 classDiagram
     class Coffee {
         +id: string
