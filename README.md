@@ -1,10 +1,14 @@
-classDiagram
+# Coffee Shop App
 
+## UML: Component ↔ Model
+```mermaid
+classDiagram
     App <|-- HomePage
     App <|-- MenuPage
     App <|-- CartPage
     MenuPage <|-- MenuList
     MenuPage ..> CoffeeModel : uses
+
 ```mermaid
 
 classDiagram
